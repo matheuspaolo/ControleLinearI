@@ -15,7 +15,7 @@ namespace InterfacePC
     {
 
         double valor1, valor2, valor3;
-        string direcao;
+        string direcao, RxString;
 
         public Form1()
         {
@@ -197,7 +197,6 @@ namespace InterfacePC
                 {
                     SerialPort.PortName = cBoxCOMs.Items[cBoxCOMs.SelectedIndex].ToString();
                     SerialPort.Open();
-
                 }
                 catch
                 {
@@ -233,9 +232,19 @@ namespace InterfacePC
             SerialPort.WriteLine("desligar");
         }
 
+        private void btnLiga_Click(object sender, EventArgs e)
+        {
+            SerialPort.WriteLine("A");
+        }
+
+        private void btnDesliga_Click(object sender, EventArgs e)
+        {
+            SerialPort.WriteLine("B");
+        }
+
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            if (btnIniciar.Text == "Iniciar")
+            /*if (btnIniciar.Text == "Iniciar")
             {
                 calculaValores();
                 ativarMotor();
@@ -248,7 +257,20 @@ namespace InterfacePC
 
                 SerialPort.WriteLine("valor3");
                 SerialPort.WriteLine(Convert.ToString(valor3));
-            }
+            }*/
+
+            //SerialPort.WriteLine("paolo");
+        }
+
+        private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            RxString = SerialPort.ReadExisting();              //le o dado disponível na serial
+            this.Invoke(new EventHandler(trataDadoRecebido));   //chama outra thread para escrever o dado no text box
+        }
+
+        private void trataDadoRecebido(object sender, EventArgs e)
+        {
+            txtBoxReceber.AppendText(RxString);
         }
     }
 }
