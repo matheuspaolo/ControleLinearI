@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.Threading;
 
 namespace InterfacePC
 {
@@ -20,12 +21,6 @@ namespace InterfacePC
         public Form1()
         {
             InitializeComponent();
-        }
-
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void atualizaListaCOMs()
@@ -205,7 +200,6 @@ namespace InterfacePC
                 }
                 if (SerialPort.IsOpen)
                 {
-                    btnConectar.Text = "Desconectar";
                     cBoxCOMs.Enabled = false;
 
                 }
@@ -225,6 +219,9 @@ namespace InterfacePC
                 }
 
             }
+
+            btnConectar.Enabled = false;
+            btnDesconectar.Enabled = true;
         }
 
         private void desativarMotor()
@@ -234,32 +231,54 @@ namespace InterfacePC
 
         private void btnLiga_Click(object sender, EventArgs e)
         {
-            SerialPort.WriteLine("A");
+
         }
 
         private void btnDesliga_Click(object sender, EventArgs e)
         {
-            SerialPort.WriteLine("B");
+            SerialPort.Write("desliga,");
+            SerialPort.Write("aylimao");
+        }
+
+        private void btnDesconectar_Click(object sender, EventArgs e)
+        {
+            SerialPort.Close();
+            btnConectar.Enabled = true;
+            btnDesconectar.Enabled = false;
+            cBoxCOMs.Enabled = true;
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            txtBoxValor1.Text = "";
+            txtBoxValor2.Text = "";
+            txtBoxValor3.Text = "";
+            cBoxCOMs.SelectedIndex = -1;
+            cBoxPeso1.SelectedIndex = -1;
+            cBoxPeso2.SelectedIndex = -1;
+            cBoxPeso3.SelectedIndex = -1;
+            txtBoxRRecebida.Text = "";
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            /*if (btnIniciar.Text == "Iniciar")
-            {
-                calculaValores();
-                ativarMotor();
+            calculaValores();
+            string send1 = String.Format(Convert.ToString(valor1));
+            string send2 = String.Format(Convert.ToString(valor2));
+            string send3 = String.Format(Convert.ToString(valor3));
 
-                SerialPort.WriteLine("valor1");
-                SerialPort.WriteLine(Convert.ToString(valor1));
+            SerialPort.Write("receberv1,");
+            SerialPort.Write(send1);
 
-                SerialPort.WriteLine("valor2");
-                SerialPort.WriteLine(Convert.ToString(valor2));
+            Thread.Sleep(1500);
 
-                SerialPort.WriteLine("valor3");
-                SerialPort.WriteLine(Convert.ToString(valor3));
-            }*/
+            SerialPort.Write("receberv2,");
+            SerialPort.Write(send2);
 
-            //SerialPort.WriteLine("paolo");
+            Thread.Sleep(1500);
+
+            SerialPort.Write("receberv3,");
+            SerialPort.Write(send3);
         }
 
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -270,7 +289,7 @@ namespace InterfacePC
 
         private void trataDadoRecebido(object sender, EventArgs e)
         {
-            txtBoxReceber.AppendText(RxString);
+            txtBoxRRecebida.AppendText(RxString);
         }
     }
 }

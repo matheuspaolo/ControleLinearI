@@ -41,7 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnConectar = new System.Windows.Forms.Button();
             this.cBoxCOMs = new System.Windows.Forms.ComboBox();
-            this.txtBoxReceber = new System.Windows.Forms.TextBox();
+            this.txtBoxRRecebida = new System.Windows.Forms.TextBox();
             this.cBoxPeso3 = new System.Windows.Forms.ComboBox();
             this.txtBoxValor3 = new System.Windows.Forms.TextBox();
             this.cBoxPeso2 = new System.Windows.Forms.ComboBox();
@@ -53,8 +53,7 @@
             this.btnIniciar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnDesconectar = new System.Windows.Forms.Button();
-            this.btnLiga = new System.Windows.Forms.Button();
-            this.btnDesliga = new System.Windows.Forms.Button();
+            this.btnLimpar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarVelocidade)).BeginInit();
             this.groupBoxControleMotor.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -171,15 +170,15 @@
             this.cBoxCOMs.Size = new System.Drawing.Size(75, 21);
             this.cBoxCOMs.TabIndex = 17;
             // 
-            // txtBoxReceber
+            // txtBoxRRecebida
             // 
-            this.txtBoxReceber.Location = new System.Drawing.Point(550, 31);
-            this.txtBoxReceber.Multiline = true;
-            this.txtBoxReceber.Name = "txtBoxReceber";
-            this.txtBoxReceber.ReadOnly = true;
-            this.txtBoxReceber.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtBoxReceber.Size = new System.Drawing.Size(228, 97);
-            this.txtBoxReceber.TabIndex = 15;
+            this.txtBoxRRecebida.Location = new System.Drawing.Point(550, 31);
+            this.txtBoxRRecebida.Multiline = true;
+            this.txtBoxRRecebida.Name = "txtBoxRRecebida";
+            this.txtBoxRRecebida.ReadOnly = true;
+            this.txtBoxRRecebida.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtBoxRRecebida.Size = new System.Drawing.Size(228, 97);
+            this.txtBoxRRecebida.TabIndex = 15;
             // 
             // cBoxPeso3
             // 
@@ -271,7 +270,7 @@
             // 
             // btnIniciar
             // 
-            this.btnIniciar.Location = new System.Drawing.Point(372, 117);
+            this.btnIniciar.Location = new System.Drawing.Point(322, 116);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(100, 34);
             this.btnIniciar.TabIndex = 16;
@@ -294,32 +293,24 @@
             // btnDesconectar
             // 
             this.btnDesconectar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDesconectar.Enabled = false;
             this.btnDesconectar.Location = new System.Drawing.Point(100, 46);
             this.btnDesconectar.Name = "btnDesconectar";
             this.btnDesconectar.Size = new System.Drawing.Size(81, 23);
             this.btnDesconectar.TabIndex = 19;
             this.btnDesconectar.Text = "Desconectar";
             this.btnDesconectar.UseVisualStyleBackColor = true;
+            this.btnDesconectar.Click += new System.EventHandler(this.btnDesconectar_Click);
             // 
-            // btnLiga
+            // btnLimpar
             // 
-            this.btnLiga.Location = new System.Drawing.Point(447, 188);
-            this.btnLiga.Name = "btnLiga";
-            this.btnLiga.Size = new System.Drawing.Size(75, 23);
-            this.btnLiga.TabIndex = 24;
-            this.btnLiga.Text = "Ligar";
-            this.btnLiga.UseVisualStyleBackColor = true;
-            this.btnLiga.Click += new System.EventHandler(this.btnLiga_Click);
-            // 
-            // btnDesliga
-            // 
-            this.btnDesliga.Location = new System.Drawing.Point(653, 191);
-            this.btnDesliga.Name = "btnDesliga";
-            this.btnDesliga.Size = new System.Drawing.Size(75, 23);
-            this.btnDesliga.TabIndex = 25;
-            this.btnDesliga.Text = "Desliga";
-            this.btnDesliga.UseVisualStyleBackColor = true;
-            this.btnDesliga.Click += new System.EventHandler(this.btnDesliga_Click);
+            this.btnLimpar.Location = new System.Drawing.Point(447, 122);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpar.TabIndex = 24;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // Form1
             // 
@@ -327,14 +318,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(800, 291);
-            this.Controls.Add(this.btnDesliga);
-            this.Controls.Add(this.btnLiga);
+            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.groupBoxControleMotor);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtBoxReceber);
+            this.Controls.Add(this.txtBoxRRecebida);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnIniciar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -367,7 +357,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnConectar;
         private System.Windows.Forms.ComboBox cBoxCOMs;
-        private System.Windows.Forms.TextBox txtBoxReceber;
+        private System.Windows.Forms.TextBox txtBoxRRecebida;
         private System.Windows.Forms.ComboBox cBoxPeso3;
         private System.Windows.Forms.TextBox txtBoxValor3;
         private System.Windows.Forms.ComboBox cBoxPeso2;
@@ -379,8 +369,7 @@
         private System.Windows.Forms.Button btnIniciar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnDesconectar;
-        private System.Windows.Forms.Button btnLiga;
-        private System.Windows.Forms.Button btnDesliga;
+        private System.Windows.Forms.Button btnLimpar;
     }
 }
 
