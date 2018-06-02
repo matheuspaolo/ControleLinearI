@@ -229,11 +229,6 @@ namespace InterfacePC
             SerialPort.WriteLine("desligar");
         }
 
-        private void btnLiga_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnDesliga_Click(object sender, EventArgs e)
         {
             SerialPort.Write("desliga,");
@@ -258,7 +253,12 @@ namespace InterfacePC
             cBoxPeso2.SelectedIndex = -1;
             cBoxPeso3.SelectedIndex = -1;
             txtBoxRRecebida.Text = "";
+            txtBoxSerialRx.Text = "";
+            btnDesconectar.Enabled = false;
+            btnConectar.Enabled = true;
+
         }
+
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
@@ -266,7 +266,6 @@ namespace InterfacePC
             string send1 = String.Format(Convert.ToString(valor1));
             string send2 = String.Format(Convert.ToString(valor2));
             string send3 = String.Format(Convert.ToString(valor3));
-
             SerialPort.Write("receberv1,");
             SerialPort.Write(send1);
 
@@ -276,7 +275,6 @@ namespace InterfacePC
             SerialPort.Write(send2);
 
             Thread.Sleep(1500);
-
             SerialPort.Write("receberv3,");
             SerialPort.Write(send3);
         }
@@ -289,7 +287,10 @@ namespace InterfacePC
 
         private void trataDadoRecebido(object sender, EventArgs e)
         {
-            txtBoxRRecebida.AppendText(RxString);
+            txtBoxSerialRx.AppendText(RxString);
+
         }
+
     }
+
 }

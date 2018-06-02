@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxSerialRx = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.rBtnAntiHorario = new System.Windows.Forms.RadioButton();
             this.rBtnHorario = new System.Windows.Forms.RadioButton();
@@ -65,19 +65,19 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(527, 261);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 22;
-            this.label4.Text = "label4";
+            this.label4.Text = "Monitor serial";
             // 
-            // textBox1
+            // txtBoxSerialRx
             // 
-            this.textBox1.Location = new System.Drawing.Point(322, 161);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(445, 97);
-            this.textBox1.TabIndex = 20;
+            this.txtBoxSerialRx.Location = new System.Drawing.Point(322, 161);
+            this.txtBoxSerialRx.Multiline = true;
+            this.txtBoxSerialRx.Name = "txtBoxSerialRx";
+            this.txtBoxSerialRx.ReadOnly = true;
+            this.txtBoxSerialRx.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtBoxSerialRx.Size = new System.Drawing.Size(445, 97);
+            this.txtBoxSerialRx.TabIndex = 20;
             // 
             // label2
             // 
@@ -321,7 +321,7 @@
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxSerialRx);
             this.Controls.Add(this.groupBoxControleMotor);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBoxRRecebida);
@@ -346,7 +346,7 @@
         #endregion
 
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBoxSerialRx;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton rBtnAntiHorario;
         private System.Windows.Forms.RadioButton rBtnHorario;
