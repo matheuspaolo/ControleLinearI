@@ -16,7 +16,7 @@ namespace InterfacePC
     {
 
         double valor1, valor2, valor3;
-        string direcao, RxString;
+        string direcao, RxString, Rx1String;
 
         public Form1()
         {
@@ -163,7 +163,7 @@ namespace InterfacePC
         private void ativarMotor()
         {
 
-            string velocidade = Convert.ToString(trackBarVelocidade.Value);
+            string velocidade = Convert.ToString(numericVelocidade.Value);
 
             if (rBtnHorario.Checked)
             {
@@ -232,7 +232,6 @@ namespace InterfacePC
         private void btnDesliga_Click(object sender, EventArgs e)
         {
             SerialPort.Write("desliga,");
-            SerialPort.Write("aylimao");
         }
 
         private void btnDesconectar_Click(object sender, EventArgs e)
@@ -256,6 +255,7 @@ namespace InterfacePC
             txtBoxSerialRx.Text = "";
             btnDesconectar.Enabled = false;
             btnConectar.Enabled = true;
+            SerialPort.Close();
 
         }
 
@@ -269,6 +269,8 @@ namespace InterfacePC
             SerialPort.Write("receberv1,");
             SerialPort.Write(send1);
 
+            //Task.Delay(1000);
+
             Thread.Sleep(1500);
 
             SerialPort.Write("receberv2,");
@@ -279,15 +281,39 @@ namespace InterfacePC
             SerialPort.Write(send3);
         }
 
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            calculaValores();
+            string t1 = Convert.ToString(valor1);
+            txtBoxRRecebida.Text= valor1.ToString().PadLeft(15,'0');
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            numericVelocidade.Maximum = 255;
+
+        }
+
+        private void btnAuto_Click(object sender, EventArgs e)
+        {
+            txtBoxValor1.Text = "220";
+            txtBoxValor2.Text = "1";
+            txtBoxValor3.Text = "1,5";
+            cBoxPeso1.SelectedIndex = 0;
+            cBoxPeso2.SelectedIndex = 1;
+            cBoxPeso3.SelectedIndex = 2;
+        }
+
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            RxString = SerialPort.ReadExisting();              //le o dado disponível na serial
-            this.Invoke(new EventHandler(trataDadoRecebido));   //chama outra thread para escrever o dado no text box
+            RxString = SerialPort.ReadExisting();
+            this.Invoke(new EventHandler(trataDadoRecebido));
         }
 
         private void trataDadoRecebido(object sender, EventArgs e)
         {
-            txtBoxSerialRx.AppendText(RxString);
+            txtBoxRRecebida.AppendText(RxString);
 
         }
 

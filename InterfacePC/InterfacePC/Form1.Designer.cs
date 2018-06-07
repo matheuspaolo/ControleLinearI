@@ -34,8 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.rBtnAntiHorario = new System.Windows.Forms.RadioButton();
             this.rBtnHorario = new System.Windows.Forms.RadioButton();
-            this.trackBarVelocidade = new System.Windows.Forms.TrackBar();
             this.groupBoxControleMotor = new System.Windows.Forms.GroupBox();
+            this.numericVelocidade = new System.Windows.Forms.NumericUpDown();
             this.SerialPort = new System.IO.Ports.SerialPort(this.components);
             this.timerCOM = new System.Windows.Forms.Timer(this.components);
             this.label3 = new System.Windows.Forms.Label();
@@ -54,8 +54,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnDesconectar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarVelocidade)).BeginInit();
+            this.btnAuto = new System.Windows.Forms.Button();
             this.groupBoxControleMotor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericVelocidade)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -95,13 +96,13 @@
             this.rBtnAntiHorario.Name = "rBtnAntiHorario";
             this.rBtnAntiHorario.Size = new System.Drawing.Size(78, 17);
             this.rBtnAntiHorario.TabIndex = 2;
-            this.rBtnAntiHorario.TabStop = true;
             this.rBtnAntiHorario.Text = "Anti-horário";
             this.rBtnAntiHorario.UseVisualStyleBackColor = true;
             // 
             // rBtnHorario
             // 
             this.rBtnHorario.AutoSize = true;
+            this.rBtnHorario.Checked = true;
             this.rBtnHorario.Location = new System.Drawing.Point(48, 30);
             this.rBtnHorario.Name = "rBtnHorario";
             this.rBtnHorario.Size = new System.Drawing.Size(59, 17);
@@ -110,26 +111,32 @@
             this.rBtnHorario.Text = "Horário";
             this.rBtnHorario.UseVisualStyleBackColor = true;
             // 
-            // trackBarVelocidade
-            // 
-            this.trackBarVelocidade.Location = new System.Drawing.Point(30, 65);
-            this.trackBarVelocidade.Maximum = 255;
-            this.trackBarVelocidade.Name = "trackBarVelocidade";
-            this.trackBarVelocidade.Size = new System.Drawing.Size(178, 45);
-            this.trackBarVelocidade.TabIndex = 0;
-            // 
             // groupBoxControleMotor
             // 
+            this.groupBoxControleMotor.Controls.Add(this.numericVelocidade);
             this.groupBoxControleMotor.Controls.Add(this.label2);
             this.groupBoxControleMotor.Controls.Add(this.rBtnAntiHorario);
             this.groupBoxControleMotor.Controls.Add(this.rBtnHorario);
-            this.groupBoxControleMotor.Controls.Add(this.trackBarVelocidade);
             this.groupBoxControleMotor.Location = new System.Drawing.Point(23, 161);
             this.groupBoxControleMotor.Name = "groupBoxControleMotor";
             this.groupBoxControleMotor.Size = new System.Drawing.Size(239, 119);
             this.groupBoxControleMotor.TabIndex = 19;
             this.groupBoxControleMotor.TabStop = false;
             this.groupBoxControleMotor.Text = "Controle do motor";
+            // 
+            // numericVelocidade
+            // 
+            this.numericVelocidade.Location = new System.Drawing.Point(95, 65);
+            this.numericVelocidade.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericVelocidade.Name = "numericVelocidade";
+            this.numericVelocidade.Size = new System.Drawing.Size(45, 20);
+            this.numericVelocidade.TabIndex = 25;
+            this.numericVelocidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericVelocidade.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // SerialPort
             // 
@@ -312,12 +319,23 @@
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
+            // btnAuto
+            // 
+            this.btnAuto.Location = new System.Drawing.Point(711, 265);
+            this.btnAuto.Name = "btnAuto";
+            this.btnAuto.Size = new System.Drawing.Size(75, 23);
+            this.btnAuto.TabIndex = 25;
+            this.btnAuto.Text = "Auto";
+            this.btnAuto.UseVisualStyleBackColor = true;
+            this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(800, 291);
+            this.Controls.Add(this.btnAuto);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label4);
@@ -331,10 +349,10 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarVelocidade)).EndInit();
+            this.Text = "UI de seleção";
             this.groupBoxControleMotor.ResumeLayout(false);
             this.groupBoxControleMotor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericVelocidade)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -350,7 +368,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton rBtnAntiHorario;
         private System.Windows.Forms.RadioButton rBtnHorario;
-        private System.Windows.Forms.TrackBar trackBarVelocidade;
         private System.Windows.Forms.GroupBox groupBoxControleMotor;
         private System.IO.Ports.SerialPort SerialPort;
         private System.Windows.Forms.Timer timerCOM;
@@ -370,6 +387,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnDesconectar;
         private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.NumericUpDown numericVelocidade;
+        private System.Windows.Forms.Button btnAuto;
     }
 }
 
