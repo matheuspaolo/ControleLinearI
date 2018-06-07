@@ -260,7 +260,7 @@ namespace InterfacePC
         }
 
 
-        private void btnIniciar_Click(object sender, EventArgs e)
+        private async void btnIniciar_Click(object sender, EventArgs e)
         {
             calculaValores();
             string send1 = String.Format(Convert.ToString(valor1));
@@ -269,24 +269,24 @@ namespace InterfacePC
             SerialPort.Write("receberv1,");
             SerialPort.Write(send1);
 
-            //Task.Delay(1000);
-
-            Thread.Sleep(1500);
+            await Task.Delay(1500);
 
             SerialPort.Write("receberv2,");
             SerialPort.Write(send2);
 
-            Thread.Sleep(1500);
+            await Task.Delay(1500);
+
             SerialPort.Write("receberv3,");
             SerialPort.Write(send3);
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click_1(object sender, EventArgs e)
         {
-            calculaValores();
-            string t1 = Convert.ToString(valor1);
-            txtBoxRRecebida.Text= valor1.ToString().PadLeft(15,'0');
+            txtBoxRRecebida.Text = "hehehe";
+            await Task.Delay(3000);
+            txtBoxRRecebida.Text = "lalalal";
+
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
