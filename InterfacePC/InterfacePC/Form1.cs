@@ -16,10 +16,13 @@ namespace InterfacePC
     {
 
         double valor1, valor2, valor3;
-        string direcao, RxString, Rx1String;
+        string direcao, RxString;
 
         public Form1()
         {
+            new wallpaper().Show();
+            Thread.Sleep(5000);
+
             InitializeComponent();
         }
 
@@ -78,23 +81,19 @@ namespace InterfacePC
                 {
                     SerialPort.PortName = cBoxCOMs.Items[cBoxCOMs.SelectedIndex].ToString();
                     SerialPort.Open();
-
                 }
                 catch
                 {
                     return;
-
                 }
                 if (SerialPort.IsOpen)
                 {
                     btnConectar.Text = "Desconectar";
                     cBoxCOMs.Enabled = false;
-
                 }
             }
             else
             {
-
                 try
                 {
                     SerialPort.Close();
@@ -105,7 +104,6 @@ namespace InterfacePC
                 {
                     return;
                 }
-
             }
         }
 
@@ -160,7 +158,7 @@ namespace InterfacePC
 
         }
 
-        private void ativarMotor()
+        private async void ativarMotor()
         {
 
             string velocidade = Convert.ToString(numericVelocidade.Value);
@@ -175,13 +173,11 @@ namespace InterfacePC
                 direcao = "antihorario";
             }
 
-            if (SerialPort.IsOpen)
-            {
-                SerialPort.WriteLine("velocidade");
-                SerialPort.WriteLine(velocidade);
-                SerialPort.WriteLine("direcao");
-                SerialPort.WriteLine(direcao);
-            }
+            SerialPort.WriteLine("velocidade,");
+            SerialPort.WriteLine(velocidade);
+            await Task.Delay(1500);
+            SerialPort.WriteLine("direcao,");
+            SerialPort.WriteLine(direcao);
         }
 
         private void btnConectar_Click_1(object sender, EventArgs e)
@@ -201,12 +197,10 @@ namespace InterfacePC
                 if (SerialPort.IsOpen)
                 {
                     cBoxCOMs.Enabled = false;
-
                 }
             }
             else
             {
-
                 try
                 {
                     SerialPort.Close();
@@ -219,14 +213,13 @@ namespace InterfacePC
                 }
 
             }
-
             btnConectar.Enabled = false;
             btnDesconectar.Enabled = true;
         }
 
         private void desativarMotor()
         {
-            SerialPort.WriteLine("desligar");
+            SerialPort.WriteLine("desativarmotor,");
         }
 
         private void btnDesliga_Click(object sender, EventArgs e)
@@ -259,40 +252,68 @@ namespace InterfacePC
 
         }
 
-
         private async void btnIniciar_Click(object sender, EventArgs e)
         {
-            calculaValores();
-            string send1 = String.Format(Convert.ToString(valor1));
-            string send2 = String.Format(Convert.ToString(valor2));
-            string send3 = String.Format(Convert.ToString(valor3));
-            SerialPort.Write("receberv1,");
-            SerialPort.Write(send1);
+            try
+            {
+                new Working().Show();
 
-            await Task.Delay(1500);
+                calculaValores();
+                string send1 = String.Format(Convert.ToString(valor1));
+                string send2 = String.Format(Convert.ToString(valor2));
+                string send3 = String.Format(Convert.ToString(valor3));
+                SerialPort.Write("receberv1,");
+                SerialPort.Write(send1);
 
-            SerialPort.Write("receberv2,");
-            SerialPort.Write(send2);
+                await Task.Delay(2000);
 
-            await Task.Delay(1500);
+                SerialPort.Write("receberv2,");
+                SerialPort.Write(send2);
 
-            SerialPort.Write("receberv3,");
-            SerialPort.Write(send3);
+                await Task.Delay(2000);
+
+                SerialPort.Write("receberv3,");
+                SerialPort.Write(send3);
+
+                await Task.Delay(1500);
+
+                //ativarMotor();
+            }
+            catch
+            {
+                DialogResult res = MessageBox.Show("Tem erro aê meu parsero...", "Ih rapaz...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-
-        private async void button1_Click_1(object sender, EventArgs e)
+        private async void numericVelocidade_ValueChanged(object sender, EventArgs e)
         {
-            txtBoxRRecebida.Text = "hehehe";
-            await Task.Delay(3000);
-            txtBoxRRecebida.Text = "lalalal";
+            
+            try
+            {
+                string velocidade = numericVelocidade.Value.ToString().PadLeft(3, '0');
+                SerialPort.Write("velocidade_");
+                SerialPort.Write(String.Format(velocidade,','));
 
+                await Task.Delay(1500);
+            }
+            catch
+            {
+                DialogResult res = MessageBox.Show("Vc tem que tá conectado ao arduino amigão.....", "Assim não rola.....", MessageBoxButtons.OK, MessageBoxIcon.Error);            
+            }
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        private void btnNaoClica_Click(object sender, EventArgs e)
         {
-            numericVelocidade.Maximum = 255;
+            DialogResult res = MessageBox.Show("YOU HAVE CHURAS??", "ARE YOU SURE???", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
 
+            if (res == DialogResult.Yes)
+            {
+                new Doggos().Show();
+            }
+            if (res == DialogResult.No)
+            {
+                DialogResult LEL = MessageBox.Show("Fez bem, otário", "MEDROSÃO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnAuto_Click(object sender, EventArgs e)
@@ -318,5 +339,4 @@ namespace InterfacePC
         }
 
     }
-
 }

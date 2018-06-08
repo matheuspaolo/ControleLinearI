@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label4 = new System.Windows.Forms.Label();
             this.txtBoxSerialRx = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,6 +56,7 @@
             this.btnDesconectar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnAuto = new System.Windows.Forms.Button();
+            this.btnNaoClica = new System.Windows.Forms.Button();
             this.groupBoxControleMotor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericVelocidade)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -64,7 +66,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(527, 261);
+            this.label4.Location = new System.Drawing.Point(519, 251);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 22;
@@ -77,7 +79,7 @@
             this.txtBoxSerialRx.Name = "txtBoxSerialRx";
             this.txtBoxSerialRx.ReadOnly = true;
             this.txtBoxSerialRx.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtBoxSerialRx.Size = new System.Drawing.Size(445, 97);
+            this.txtBoxSerialRx.Size = new System.Drawing.Size(445, 85);
             this.txtBoxSerialRx.TabIndex = 20;
             // 
             // label2
@@ -136,7 +138,7 @@
             this.numericVelocidade.Size = new System.Drawing.Size(45, 20);
             this.numericVelocidade.TabIndex = 25;
             this.numericVelocidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericVelocidade.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.numericVelocidade.ValueChanged += new System.EventHandler(this.numericVelocidade_ValueChanged);
             // 
             // SerialPort
             // 
@@ -329,12 +331,26 @@
             this.btnAuto.UseVisualStyleBackColor = true;
             this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
             // 
+            // btnNaoClica
+            // 
+            this.btnNaoClica.BackColor = System.Drawing.Color.Red;
+            this.btnNaoClica.Cursor = System.Windows.Forms.Cursors.No;
+            this.btnNaoClica.Location = new System.Drawing.Point(363, 251);
+            this.btnNaoClica.Name = "btnNaoClica";
+            this.btnNaoClica.Size = new System.Drawing.Size(97, 38);
+            this.btnNaoClica.TabIndex = 20;
+            this.btnNaoClica.Text = "NÃO CLICA";
+            this.btnNaoClica.UseVisualStyleBackColor = false;
+            this.btnNaoClica.Click += new System.EventHandler(this.btnNaoClica_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = global::InterfacePC.Properties.Resources._130938339377;
             this.ClientSize = new System.Drawing.Size(800, 291);
+            this.Controls.Add(this.btnNaoClica);
             this.Controls.Add(this.btnAuto);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.groupBox2);
@@ -346,6 +362,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnIniciar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -389,6 +406,7 @@
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.NumericUpDown numericVelocidade;
         private System.Windows.Forms.Button btnAuto;
+        private System.Windows.Forms.Button btnNaoClica;
     }
 }
 
