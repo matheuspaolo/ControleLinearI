@@ -34,8 +34,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::InterfacePC.Properties.Resources.wallpaperroggo_;
-            this.ClientSize = new System.Drawing.Size(1190, 509);
+            this.BackgroundImage = global::InterfacePC.Properties.Resources.capa_cl;
+            this.ClientSize = new System.Drawing.Size(1190, 597);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "wallpaper";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

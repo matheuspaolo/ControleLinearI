@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5B6F8829-13D5-4E71-AECB-8D5DBD1CC782}</ProjectGuid>
+    <ProjectGuid>{0B38DC1A-2090-417D-8904-6C896DB4218D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>InterfacePC</RootNamespace>
     <AssemblyName>InterfacePC</AssemblyName>
@@ -123,6 +123,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\giphy.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\giphy %282%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gif2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gif3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gif4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gif5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\capa cl.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

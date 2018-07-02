@@ -5,15 +5,7 @@ String h;
 int velocidade, qtd1,qtd2,qtd3;
 float r1, r2, r3, lido_m1,lido_m2,lido_m3, r_ref,r1_lido,r2_lido,r3_lido;
 char d;
-int raw1,raw2,raw3;
-int Vin = 5;
-float Vout1,Vout2,Vout3;
-/////////// DECLARAR AS RESISTÊNCIAS DE REFERÊNCIA ///////////
-float r_ref1 = 1000;
-float r_ref2 = 1000;
-float r_ref3 = 1000;
-//////////////////////////////////////////////////////////////
-float buffer1,buffer2,buffer3 = 0;
+
 
 void setup() {
 	Serial.begin(9600);
@@ -95,65 +87,11 @@ void loop() {
 	}
 
 	/////////// TRECHO PARA SERVO 1 ///////////
-	raw1 = analogRead(A0);
-	if (raw1 && r1)
-	{
-		buffer1 = raw1 * Vin;
-		Vout1 = (buffer1) / 1024.0;
-		buffer1 = (Vin / Vout1) - 1;
-		r1_lido = r_ref1 * buffer1;
-		Serial.println(r1_lido);
-	}
-
-	if (r1_lido - 0.05*r1_lido < r1 && r1_lido + 0.05*r1_lido > r1)
-	{
-		qtd1++;
-		Serial.print("Resistor de ");
-		Serial.print(r2_lido);
-		Serial.println(" ohms encontrado.");
-		// código do servo 1
-	}
 	/////////// FIM DO SERVO 1 ///////////
 
 	/////////// TRECHO PARA SERVO 2 ///////////
-	raw2 = analogRead(A1);
-	if (raw2 && r2)
-	{
-		buffer2 = raw2 * Vin;
-		Vout2 = (buffer2) / 1024.0;
-		buffer2 = (Vin / Vout2) - 1;
-		r2_lido = r_ref2 * buffer2;
-		Serial.println(r2_lido);
-	}
-
-	if (r2_lido - 0.05*r2_lido < r2 && r2_lido + 0.05*r2_lido > r2)
-	{
-		qtd2++;
-		Serial.print("Resistor de ");
-		Serial.print(r2_lido);
-		Serial.println(" ohms encontrado.");
-		// código do servo 2
-	}
 	/////////// FIM DO SERVO 2 ///////////
 
 	/////////// TRECHO PARA SERVO 3 ///////////
-	raw3 = analogRead(A3);
-	if (raw3 && r3)
-	{
-		buffer3 = raw3 * Vin;
-		Vout3 = (buffer3) / 1024.0;
-		buffer3 = (Vin / Vout3) - 1;
-		r3_lido = r_ref3 * buffer3;
-		Serial.println(r3_lido);
-	}
-
-	if (r3_lido - 0.05*r3_lido < r3 && r3_lido + 0.05*r3_lido > r3)
-	{
-		qtd3++;
-		Serial.print("Resistor de ");
-		Serial.print(r3_lido);
-		Serial.println(" ohms encontrado.");
-		// código do servo 3
-	}
 	/////////// FIM DO SERVO 3 ///////////
 }

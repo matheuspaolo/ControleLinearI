@@ -109,8 +109,6 @@ namespace InterfacePC
 
         private void calculaValores()
         {
-            try
-            {
                 switch (cBoxPeso1.SelectedIndex)
                 {
                     case 0:
@@ -150,12 +148,7 @@ namespace InterfacePC
                         break;
 
                 }
-            }
-            catch
-            {
-                DialogResult res = MessageBox.Show("Tem erro aê meu parsero... \narruma as resistências direitinho amigão", "Ih rapaz...", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            
         }
 
         private async void ativarMotor()
@@ -188,10 +181,12 @@ namespace InterfacePC
                 {
                     SerialPort.PortName = cBoxCOMs.Items[cBoxCOMs.SelectedIndex].ToString();
                     SerialPort.Open();
+                    btnConectar.Enabled = false;
+                    btnDesconectar.Enabled = true;
                 }
                 catch
                 {
-                    return;
+                    DialogResult res = MessageBox.Show("Não há nenhuma porta serial selecionada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 }
                 if (SerialPort.IsOpen)
@@ -199,22 +194,6 @@ namespace InterfacePC
                     cBoxCOMs.Enabled = false;
                 }
             }
-            else
-            {
-                try
-                {
-                    SerialPort.Close();
-                    cBoxCOMs.Enabled = true;
-                    btnConectar.Text = "Conectar";
-                }
-                catch
-                {
-                    return;
-                }
-
-            }
-            btnConectar.Enabled = false;
-            btnDesconectar.Enabled = true;
         }
 
         private void desativarMotor()
@@ -257,12 +236,12 @@ namespace InterfacePC
             try
             {
                 new Working().Show();
-
                 calculaValores();
                 string send1 = String.Format(Convert.ToString(valor1));
                 string send2 = String.Format(Convert.ToString(valor2));
-                string send3 = String.Format(Convert.ToString(valor3));
+                string send3 = String.Format(Convert.ToString(valor3));             
                 SerialPort.Write("receberv1,");
+                
                 SerialPort.Write(send1);
 
                 await Task.Delay(2000);
@@ -281,7 +260,7 @@ namespace InterfacePC
             }
             catch
             {
-                DialogResult res = MessageBox.Show("Tem erro aê meu parsero...", "Ih rapaz...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult res = MessageBox.Show("Verifique se o Arduino está conectado e as resistências foram inseridas.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -316,6 +295,11 @@ namespace InterfacePC
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SerialPort.Write("leitura,");
+        }
+
         private void btnAuto_Click(object sender, EventArgs e)
         {
             txtBoxValor1.Text = "220";
@@ -338,5 +322,6 @@ namespace InterfacePC
 
         }
 
+        //LELELE
     }
 }

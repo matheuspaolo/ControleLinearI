@@ -34,21 +34,29 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::InterfacePC.Properties.Resources.giphy;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::InterfacePC.Properties.Resources.giphy__2_;
             this.pictureBox1.Location = new System.Drawing.Point(-2, 1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(518, 298);
+            this.pictureBox1.Size = new System.Drawing.Size(238, 243);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Working
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(499, 274);
+            this.CausesValidation = false;
+            this.ClientSize = new System.Drawing.Size(237, 239);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Location = new System.Drawing.Point(20, 0);
             this.Name = "Working";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Working";
+            this.Load += new System.EventHandler(this.Working_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

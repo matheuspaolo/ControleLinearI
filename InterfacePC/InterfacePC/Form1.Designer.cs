@@ -57,6 +57,7 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnAuto = new System.Windows.Forms.Button();
             this.btnNaoClica = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBoxControleMotor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericVelocidade)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -125,6 +126,7 @@
             this.groupBoxControleMotor.TabIndex = 19;
             this.groupBoxControleMotor.TabStop = false;
             this.groupBoxControleMotor.Text = "Controle do motor";
+            this.groupBoxControleMotor.Visible = false;
             // 
             // numericVelocidade
             // 
@@ -253,7 +255,7 @@
             this.groupBox1.Controls.Add(this.cBoxPeso1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtBoxValor1);
-            this.groupBox1.Location = new System.Drawing.Point(23, 31);
+            this.groupBox1.Location = new System.Drawing.Point(23, 88);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(271, 108);
             this.groupBox1.TabIndex = 14;
@@ -339,17 +341,28 @@
             this.btnNaoClica.Name = "btnNaoClica";
             this.btnNaoClica.Size = new System.Drawing.Size(97, 38);
             this.btnNaoClica.TabIndex = 20;
-            this.btnNaoClica.Text = "NÃO CLICA";
+            this.btnNaoClica.Text = "é melhor n clicar....";
             this.btnNaoClica.UseVisualStyleBackColor = false;
+            this.btnNaoClica.Visible = false;
             this.btnNaoClica.Click += new System.EventHandler(this.btnNaoClica_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(95, 29);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Obter leitura";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::InterfacePC.Properties.Resources._130938339377;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(800, 291);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnNaoClica);
             this.Controls.Add(this.btnAuto);
             this.Controls.Add(this.btnLimpar);
@@ -366,7 +379,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UI de seleção";
+            this.Text = "Interface gráfica de seleção";
             this.groupBoxControleMotor.ResumeLayout(false);
             this.groupBoxControleMotor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericVelocidade)).EndInit();
@@ -407,6 +420,7 @@
         private System.Windows.Forms.NumericUpDown numericVelocidade;
         private System.Windows.Forms.Button btnAuto;
         private System.Windows.Forms.Button btnNaoClica;
+        private System.Windows.Forms.Button button1;
     }
 }
 
